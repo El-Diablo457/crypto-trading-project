@@ -1,18 +1,57 @@
-
 {
-  "name": "crypto-trading-project",
+  "name": "cryptotradingproject",
   "version": "1.0.0",
-  "private": true,
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.55.0",
+    "caniuse-lite": "^1.0.30001735",
+    "client-only": "^0.0.1",
+    "color": "^4.2.3",
+    "color-convert": "^2.0.1",
+    "color-name": "^1.1.4",
+    "color-string": "^1.9.1",
+    "detect-libc": "^2.0.4",
+    "is-arrayish": "^0.3.2",
+    "nanoid": "^3.3.11",
+    "next": "^15.5.0",
+    "next-auth": "^4.24.11",
+    "onesignal-node": "^3.4.0",
+    "picocolors": "^1.1.1",
+    "postcss": "^8.4.31",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-onesignal": "^3.2.3",
+    "scheduler": "^0.26.0",
+    "semver": "^7.7.2",
+    "sharp": "^0.34.3",
+    "simple-swizzle": "^0.2.2",
+    "source-map-js": "^1.2.1",
+    "styled-jsx": "^5.1.6",
+    "tr46": "^0.0.3",
+    "tslib": "^2.8.1",
+    "undici-types": "^7.10.0",
+    "webidl-conversions": "^3.0.1",
+    "whatwg-url": "^5.0.0",
+    "ws": "^8.18.3"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
-  "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "@supabase/supabase-js": "latest"
-  }
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/El-Diablo457/crypto-trading-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/El-Diablo457/crypto-trading-project/issues"
+  },
+  "homepage": "https://github.com/El-Diablo457/crypto-trading-project#readme"
 }
-```
