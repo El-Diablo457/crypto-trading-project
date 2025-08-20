@@ -1,7 +1,7 @@
 @echo off
 REM =====================================================
 REM Fully Automated Crypto Trading Project Deployment
-REM One-Click: Auto Git, Branch, Commit, Env, Vercel Deploy
+REM Windows-Friendly
 REM =====================================================
 
 REM 1️⃣ Navigate to project folder
@@ -42,40 +42,29 @@ echo     { "src": "/(.*)", "dest": "/" }
 echo   ]
 echo }
 ) > vercel.json
-echo vercel.json updated successfully!
+echo vercel.json has been updated successfully!
 echo.
 
 REM 5️⃣ Stage all changes
 git add .
 
-REM 6️⃣ Commit changes with auto-generated timestamp
-for /f "tokens=1-4 delims=/: " %%a in ("%date% %time%") do (
-    set DATETIME=%%a-%%b-%%c_%%d
-)
-git commit -m "Auto deploy commit %DATETIME%" >nul 2>&1
+REM 6️⃣ Commit changes
+set /p COMMIT_MSG=Enter commit message: 
+git commit -m "%COMMIT_MSG%"
 
 REM 7️⃣ Push to GitHub
 git push -u origin main
 echo.
 
-REM 8️⃣ Set Vercel environment variables (pre-filled)
-set SUPABASE_URL=your-supabase-url
-set SUPABASE_ANON_KEY=your-anon-key
-set MAYA_KEY=your-maya-secret-key
+REM 8️⃣ Set Vercel environment variables (prompt)
+echo ===== Vercel Environment Variables =====
+set /p SUPABASE_URL=Enter NEXT_PUBLIC_SUPABASE_URL: 
+set /p SUPABASE_ANON_KEY=Enter NEXT_PUBLIC_SUPABASE_ANON_KEY: 
+set /p MAYA_KEY=Enter MAYA_SECRET_KEY: 
 
-REM 8a️⃣ Skip env vars if they already exist
-for %%V in (NEXT_PUBLIC_SUPABASE_URL NEXT_PUBLIC_SUPABASE_ANON_KEY MAYA_SECRET_KEY) do (
-    vercel env ls | findstr /i "%%V" >nul
-    if errorlevel 1 (
-        REM Variable not found, add it
-        if "%%V"=="NEXT_PUBLIC_SUPABASE_URL" vercel env add %%V production %SUPABASE_URL%
-        if "%%V"=="NEXT_PUBLIC_SUPABASE_ANON_KEY" vercel env add %%V production %SUPABASE_ANON_KEY%
-        if "%%V"=="MAYA_SECRET_KEY" vercel env add %%V production %MAYA_KEY%
-        echo Added %%V
-    ) else (
-        echo %%V already exists, skipping...
-    )
-)
+vercel env add NEXT_PUBLIC_SUPABASE_URL production %SUPABASE_URL%
+vercel env add NEXT_PUBLIC_SUPABASE_ANON_KEY production %SUPABASE_ANON_KEY%
+vercel env add MAYA_SECRET_KEY production %MAYA_KEY%
 echo.
 
 REM 9️⃣ Deploy to Vercel production
