@@ -1,7 +1,7 @@
 @echo off
 REM =====================================================
 REM Fully Automated Crypto Trading Project Deployment
-REM Windows-Friendly
+REM Windows-Friendly - Pre-filled environment variables
 REM =====================================================
 
 REM 1️⃣ Navigate to project folder
@@ -56,15 +56,15 @@ REM 7️⃣ Push to GitHub
 git push -u origin main
 echo.
 
-REM 8️⃣ Set Vercel environment variables (prompt)
-echo ===== Vercel Environment Variables =====
-set /p SUPABASE_URL=Enter NEXT_PUBLIC_SUPABASE_URL: 
-set /p SUPABASE_ANON_KEY=Enter NEXT_PUBLIC_SUPABASE_ANON_KEY: 
-set /p MAYA_KEY=Enter MAYA_SECRET_KEY: 
+REM 8️⃣ Set Vercel environment variables (pre-filled)
+set SUPABASE_URL=your-supabase-url
+set SUPABASE_ANON_KEY=your-anon-key
+set MAYA_KEY=your-maya-secret-key
 
 vercel env add NEXT_PUBLIC_SUPABASE_URL production %SUPABASE_URL%
 vercel env add NEXT_PUBLIC_SUPABASE_ANON_KEY production %SUPABASE_ANON_KEY%
 vercel env add MAYA_SECRET_KEY production %MAYA_KEY%
+echo Vercel environment variables applied successfully.
 echo.
 
 REM 9️⃣ Deploy to Vercel production
